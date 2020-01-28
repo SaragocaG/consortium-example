@@ -1,0 +1,29 @@
+.user-picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    float: left
+}
+
+.user-info {
+    float: left;
+    line-height: 1rem;
+    padding: 15px 0
+}
+
+.user-name {
+    font-size: 1.3rem
+}
+
+.user-role {
+    color: #666
+}
+
+.user-picture-container {
+    float: left;
+    padding: 10px
+}
+
+h5 {
+    margin: 0 1rem !important
+}

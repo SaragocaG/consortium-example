@@ -1,0 +1,22 @@
+.client {
+    width: 100%;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    background-color: white;
+    margin: 15px 0
+}
+
+.client::before {
+    content: '';
+    float: left;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(#8916FB, #00fc9e);
+    border-radius: 10px 0 0 10px;
+    margin-left: -10px;
+}
+
+.client-picture {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}

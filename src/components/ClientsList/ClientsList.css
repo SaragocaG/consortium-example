@@ -1,0 +1,17 @@
+#filters {
+    height: 120px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    display: flex;
+}
+
+#clients {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#classification {
+    margin-top: 15px;
+    text-align: right;
+}
