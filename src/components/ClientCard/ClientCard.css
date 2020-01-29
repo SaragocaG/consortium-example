@@ -1,0 +1,50 @@
+.client-card {
+    padding-left: 20px;
+    background: linear-gradient(#8916FB, #00fc9e);
+    border-radius: 10px 0 0 10px;
+}
+
+.client-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    padding: 10px 15px;
+    grid-gap: 10px;
+    width: 100%;
+    background-color:white;
+}
+
+.client-picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    float: left;
+}
+
+.client-info {
+    float: left;
+    padding: 15px 0
+}
+
+.client-name {
+    font-size: 1.3rem
+}
+
+.client-quotas{
+    color: #666
+}
+
+.client-picture-container {
+    float: left;
+    padding: 10px
+}
+
+h5 {
+    margin: 0 1rem !important
+}
+
+
+@media screen and (max-width: 768px){
+    
+}
