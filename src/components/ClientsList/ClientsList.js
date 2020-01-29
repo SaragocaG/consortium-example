@@ -1,43 +1,97 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ClientsList.css';
 
 import ClientCard from '../ClientCard/ClientCard'
-
-const clients = [
-  { id: 1, name: 'Douglas Adams', acumValue: 123, phone: '(XX) 1333-3333', email: 'abc@def.com', quotas: 2, score: 54, picture: 'https://atitudereflexiva.files.wordpress.com/2018/05/douglas-adams.jpg' },
-  { id: 2, name: 'Anne Frank', acumValue: 321, phone: '(XX) 2333-3333', email: 'abc@def.com', quotas: 7, score: 87, picture: 'https://upload.wikimedia.org/wikipedia/pt/1/1b/Anne-Frank_lightbox.jpg' },
-  { id: 3, name: 'Franz Kafka', acumValue: 234, phone: '(XX) 3333-3333', email: 'abc@def.com', quotas: 8, score: 76, picture: 'http://statig1.akamaized.net/bancodeimagens/3n/vr/a2/3nvra2nu58exxk5307f1qeqfn.jpg' },
-  { id: 5, name: 'Agatha Christie', acumValue: 543, phone: '(XX) 4333-3333', email: 'abc@def.com', quotas: 3, score: 56, picture: 'https://poressaspaginas.files.wordpress.com/2011/04/agatha_christie_portrait-787835.jpg' },
-  { id: 8, name: 'Gil Vicente', acumValue: 456, phone: '(XX) 5333-3333', email: 'abc@def.com', quotas: 1, score: 38, picture: 'https://www.portaldaliteratura.com/assets/files_autores/111.jpg' }
-]
-
+import mockClients from '../../static/clients'
 
 
 function ClientsList() {
+  let [ orderBy, setOrderBy ] = useState('default')
+  let [ clients, setClients ] = useState(mockClients)
 
-  const { orderBy, setOrderBy } = useState('default')
+  useEffect(() => {
+    setClients(mockClients)
+  }, [])
+
+  useEffect(() => {
+    
+  }, [orderBy])
+
+  function filterClients () {
+    let search = document.getElementById('txSearch').value
+    let filtered = mockClients.filter(client => search === '' ? true : client.name.toUpperCase().includes(search.toUpperCase()))
+    setClients(filtered)
+  }
 
   return (
-    <>
-      <div class="row">
-        <div class="col s12">
-          <b>Clients</b>
-        </div>
-        <div id="filters" class="col s3 m12">
-          Filtros
-        </div>
-        <div id="classification" class="col s9 m12">
-          Ordenar por: {orderBy}
-        </div>
-        <div id="clients" class="col s12">
-          {
-            clients.map(client => (
-              <ClientCard key="client.id" client={client} />
-            ))
-          }
-        </div>
+    <div>
+      <div>
+        <b className="text-blue">Clientes</b>
       </div>
-    </>
+
+      <div id="filters" className="my-3 px-2 py-2">
+        <div className="filterSearch">
+          <input type="text" placeholder="Procurar..." id="txSearch" className="px-1 py-1" onChange={filterClients} />
+        </div>
+
+        <div className="filterPhase">
+          <select className="px-1 py-1" onChange={filterClients}>
+            <option value="" disabled selected>Etapa da Jornada</option>
+            <option value="Início">Início</option>
+            <option value="Meio">Meio</option>
+            <option value="Fim">Fim</option>
+          </select>
+        </div>
+
+        <div className="filterScore">
+          <input type="range" min="0" max="100"/>
+        </div>
+
+        <div className="filterGroup"  onChange={filterClients}>
+          <select className="px-1 py-1">
+            <option disabled selected>Grupo</option>
+            <option value="Group A">Group A</option>
+            <option value="Group B">Group B</option>
+            <option value="Group C">Group C</option>
+          </select>
+        </div>
+
+        <div className="filterSegment" onChange={filterClients}>
+          <select className="px-1 py-1">
+            <option disabled selected>Segmento</option>
+            <option value="Segmento 1">Segmento 1</option>
+            <option value="Segmento 2">Segmento 2</option>
+            <option value="Segmento 3">Segmento 3</option>
+          </select>
+        </div>
+
+        <div className="filterAcumValue"  onChange={filterClients}>
+          <select className="px-1 py-1">
+            <option disabled selected>Valor Acumulado</option>
+            <option value="10000">Até 10.000</option>
+            <option value="50000">Até 50.000</option>
+            <option value="100000">Acima de 100.000</option>
+          </select>
+        </div>
+
+        <div className="filterChk">
+          <div><label htmlFor="chkAdapt">Adaptação</label><input type="checkbox" id="chkAdapt" /></div>
+          <div><label htmlFor="chkPlan">Planejado</label><input type="checkbox" id="chkPlan" /></div>
+          <div><label htmlFor="chkContemp">Contemplado</label><input type="checkbox" id="chkContemp" /></div>
+        </div>
+
+      </div>
+
+      <div id="classification" className="col s9 m12">
+        Ordenar por: { orderBy }
+      </div>
+
+      <div id="clientsList" className="col s12">
+        {
+          clients.map(client => <ClientCard key="client.id" client={client} /> )
+        }
+      </div>
+    </div>
   )
 }
 

@@ -5,40 +5,32 @@ function ClientCard(props) {
   const { client } = props
 
   return (
-    <div className="client">
-        <div className="row">
-
-          <div className="col s2">
-            <img className="client-picture" src={ client.picture } />
+    <div className='client-card'>
+      <div className="client-container my-2">
+        <div className="client-header">
+          <div className="">
+            <img className="client-picture" src={  client.picture } />
+          </div>
+          <div>
+            <span className="client-name text-blue">{ client.name }</span>
+            <p className="client-quotas">{ client.quotas }</p>
           </div>
 
-          <div className="col s3">
-            <h5>{ client.name }</h5>
-            <p>{ client.acumValue }</p>
+          <div>
+            <p className="client-phone">{ client.phone }</p>
+            <p className="client-email">{ client.email }</p>
           </div>
 
-          <div className="col s4">
-            <div className="row">
-              <div className="col s6">
-                Telefone
-              </div>
-              <div className="col s6">
-                Cidade
-              </div>
-              <div className="col s6">
-                E-mail
-              </div>
-              <div className="col s6">
-                Cotas
-              </div>
-            </div>
+          <div>
+            <p className="client-city">{ client.city }</p>
+            <p className="client-quotas">{ client.quotas }</p>
           </div>
 
-          <div className="col s2 h-100">
-            <h5>{ client.score }</h5>
+          <div>
+            <h3>{ client.score }</h3>
           </div>
-
         </div>
+      </div>
     </div>
   )
 }

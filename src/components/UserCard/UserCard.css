@@ -2,12 +2,12 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    float: left
+    margin-right: 10px;
+    float: left;
 }
 
 .user-info {
     float: left;
-    line-height: 1rem;
     padding: 15px 0
 }
 

@@ -1,8 +1,9 @@
+// Imports
 import React, { useState } from 'react';
 import './App.css';
 
 // Components
-import Header from './components/Header/Header'
+import UserCard from './components/UserCard/UserCard'
 import MainMenu from './components/MainMenu/MainMenu'
 import ClientsList from './components/ClientsList/ClientsList'
 
@@ -10,28 +11,47 @@ function App() {
   // State
   const [menuVisibility, setMenuVisibility ] = useState('hidden')
 
+  // Methods
   function toggleMenu() {
     setMenuVisibility(menuVisibility === 'hidden' ? 'shown' : 'hidden')
   }
 
   return (
     <div id="app" className="App">
-      <div className="row" id="app-container">
+      
+      <div id="brand">
+        <img src="https://www.bamaqconsorcio.com.br/images/logo_agora_e_bamaq.png" alt="Brand logo" id="brand-logo" />
+      </div>      
+      
+      <header id="header">
+        <div className="user-container">
+          <UserCard />
+        </div>
+        <div className="options-container">          
+          <a href="#logoff" className="text-blue hide-sm">
+            Logoff
+          </a>
+          <a href="#settings" className="text-blue hide-sm">
+            <i className="material-icons">settings</i>
+          </a>
+          <a href="#menu" className="text-blue" id="menu-toggler" onClick={toggleMenu}>
+            <i className="material-icons">menu</i>
+          </a>
+          <a href="#messages" className="text-blue">
+            <i className="material-icons">message</i>&nbsp;
+          </a>
+        </div>
+      </header>
 
-        <aside id="main-menu" className="col l3 m4" data-visibility={menuVisibility}>
-          <MainMenu />
-        </aside>
+      <aside id="aside" data-visibility={menuVisibility}>
+        <div className="aside-shadow" onClick={toggleMenu}/>
+        <MainMenu />
+      </aside>
 
-        <header id="header" className="col s12 l9 m8">
-          <Header />
-        </header>
+      <main id="main">
+        <ClientsList />
+      </main>
 
-        <main id="main-content" className="col s12 l9 m8">
-          <ClientsList />
-          <button onClick={toggleMenu}>ToggleMenu</button>
-        </main>
-
-      </div>
     </div>
   );
 }
