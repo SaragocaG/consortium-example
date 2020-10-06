@@ -20,7 +20,7 @@ function App() {
     <div id="app" className="App">
       
       <div id="brand">
-        <img src="https://www.bamaqconsorcio.com.br/images/logo_agora_e_bamaq.png" alt="Brand logo" id="brand-logo" />
+        <img src="xyz" alt="Brand logo" id="brand-logo" />
       </div>      
       
       <header id="header">
